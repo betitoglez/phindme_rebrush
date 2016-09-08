@@ -9,16 +9,30 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <input type="hidden" name="loginType" value="user" />
+                        <div class="form-group{{ $errors->has('mail') ? ' has-error' : '' }}">
+                            <label for="mail" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="mail" type="email" class="form-control" name="mail" value="{{ old('mail') }}"  autofocus>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('mail'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('mail') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('mail') ? ' has-error' : '' }}">
+                            <label for="user" class="col-md-4 control-label">Username</label>
+
+                            <div class="col-md-6">
+                                <input id="user" type="text" class="form-control" name="user" value="{{ old('user') }}"  >
+
+                                @if ($errors->has('user'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user') }}</strong>
                                     </span>
                                 @endif
                             </div>

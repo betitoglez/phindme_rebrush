@@ -22,7 +22,7 @@ class User extends Authenticatable
         'user',
         'name',
         'name_privacy',
-        'email',
+        'mail',
         'mail_privacy',
         'privacy',
         'remember_token',

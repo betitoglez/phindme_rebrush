@@ -26,6 +26,7 @@ Route::get('response', function () {
 */
 Route::get('{locale}/home', function ($locale) {
     App::setLocale($locale);
+    return redirect("/home");
 });
 
 Auth::routes();
