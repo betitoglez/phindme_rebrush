@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller
 {
@@ -57,6 +58,20 @@ class LoginController extends Controller
             $this->_defaultLoginField = "user";
         }
         return $this->_defaultLoginField;
+    }
+
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * Added 'is_active' flag by Alberto.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return array_merge($request->only($this->username(), 'password'),array("is_active"=>1));
     }
 
 

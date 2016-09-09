@@ -9,8 +9,22 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
-                        <input type="hidden" name="loginType" value="user" />
-                        <div class="form-group{{ $errors->has('mail') ? ' has-error' : '' }}">
+
+
+                        <div class="form-group">
+                            <label for="mail" class="col-md-4 control-label">Login type</label>
+
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-login" role="group" aria-label="Login">
+                                    <button type="button" data-rel="user" class="btn btn-default btn-primary">Username</button>
+                                    <button type="button" data-rel="mail" class="btn btn-default">Email</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <input type="hidden" name="loginType" id="loginType" value="user" />
+                        <div class="form-group frm-login frm-login-mail{{ $errors->has('mail') ? ' has-error' : '' }}" style="display:none">
                             <label for="mail" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -24,7 +38,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('mail') ? ' has-error' : '' }}">
+                        <div class="form-group frm-login frm-login-user{{ $errors->has('mail') ? ' has-error' : '' }}">
                             <label for="user" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
